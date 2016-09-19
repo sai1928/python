@@ -6,7 +6,16 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
    <artifactId>pythoncode</artifactId>
    <version>09.11</version>
    <packaging>jar</packaging>
-   
+   <repositories>
+   <repository>
+			<id>internal</id>
+			<name>Internal Repository</name>
+			<url>http://localhost:8081/nexus</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+    </repositories>
    <build>
    <directory>${project.basedir}/target</directory>
     <finalName>${project.artifactId}-${project.version}</finalName>
@@ -53,4 +62,18 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         </plugin>
   </plugins>
  </build> 
+ <distributionManagement>
+    <repository>
+      <id>internal</id>
+      <name>Internal Repository-releases</name>
+      <url>
+      http://localhost:8081/repository/maven-releases/
+	  </url>
+    </repository>
+    <snapshotRepository>
+      <id>internal</id>
+      <name>Internal Repository-snapshots</name>
+     <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
